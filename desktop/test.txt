@@ -1,0 +1,16 @@
+Prototyping and Sampling Experience to Evaluate Ubiquitous Computing Privacy in the Real World
+An Examination of Daily Information Needs and Sharing Opportunities
+Breaking the Disposable Technology Paradigm: Opportunities for Sustainable Interaction Design for Mobile Phones
+BodyScope: A Wearable Acoustic Sensor for Activity Recognition
+Review Spotlight: A User Interface for Summarizing User-generated Reviews Using Adjective-Noun Word Pairs
+Sensing Foot Gestures from the Pocket
+The Design and Evaluation of a Task-Centered Battery Interface
+Encounting SenseCam: Personal Recording Technologies in Everyday Life
+CareLog: A Selective Archiving Tool for Behavior Management in Schools
+Leveraging Proprioception to Make Mobile Phones More Accessible to Users with Visual Impairments
+SpaceSense: Representing Geographical Information to Visually Impaired People Using Spatial Tactile Feedback
+Storyboarding: An Empirical Determination of Best Practices and Effective Guidelines
+Timbremap: Enabling the Visually-Impaired to Use Maps on Touch-Enabled Devices
+SemFeel: A User Interface with Semantic Tactile Feedback for Mobile Touch-screen Devices
+The 1line Keyboard: A QWERTY Layout in a Single Line
+Virtual shelves: Interactions with Orientation Aware Devices
