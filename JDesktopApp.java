@@ -130,16 +130,7 @@ class JDesktopApp
     if (e.getSource() == notepad_button)
       new JNotepad();
     else if (e.getSource() == explorer_button) {
-//    	// File (or directory) with old name
-//    	File file = new File("C:\\Users\\aaron\\Videos\\Family.Guy.S13E13.HDTV.x264-2HD[ettv].avi");
-//
-//    	// File (or directory) with new name
-//    	File file2 = new File("C:\\Users\\aaron\\Videos\\newname.avi");
-//
-//    	// Rename file (or directory)
-//    	boolean success = file.renameTo(file2);
-
-    	System.out.println("HERE");
+    	new fileView();
     }
     else if (e.getSource() == pdf_button) {
     	new pdfView();
