@@ -9,6 +9,8 @@ import javax.swing.*;
 class JNotepad
   extends JFrame { 
   
+	private JTextArea ta;
+	
   public JNotepad() {
     super("Untitled - Notepad");
     
@@ -30,7 +32,7 @@ class JNotepad
     menubar.add(menu_h);
     
     setLayout(new BorderLayout());
-    JTextArea ta = new JTextArea();
+    ta = new JTextArea();
     ta.setFont(JDesktopApp.FONT);
     JScrollPane sp = new JScrollPane(ta);   // JTextArea is placed in a JScrollPane.
     getContentPane().add(sp);
@@ -38,9 +40,16 @@ class JNotepad
     
     setLocation(100,100);
     setSize(700,400);
-    setVisible(true);
+    setVisible(false);
     
     toFront();
   }
+  
+  public void addToTextArea(String string) {
+	  this.ta.append(string);
+  }
 
+  public void toggleOn() {
+	  this.setVisible(true);
+  }
 }

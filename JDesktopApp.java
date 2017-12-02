@@ -6,22 +6,7 @@ import java.util.*;
 import javax.imageio.*;
 import javax.swing.*;
 
-import org.apache.pdfbox.cos.COSDocument;
-import org.apache.pdfbox.io.RandomAccessRead;
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
-import org.apache.pdfbox.pdmodel.PDDocumentInformation;
-import org.apache.pdfbox.pdmodel.common.PDMetadata;
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.xmpbox.XMPMetadata;
-import org.apache.xmpbox.schema.AdobePDFSchema;
-import org.apache.xmpbox.schema.DublinCoreSchema;
-import org.apache.xmpbox.schema.XMPBasicSchema;
-import org.apache.xmpbox.xml.DomXmpParser;
-import org.apache.xmpbox.xml.XmpParsingException;
-
+@SuppressWarnings("serial")
 class JDesktopApp
   extends JWindow
   implements ActionListener  { 
@@ -47,7 +32,8 @@ class JDesktopApp
   public static final String TXT_ICON = "./images/file_txt.png";
   
   protected BufferedImage bgImage = null;
-  protected Vector files = new Vector();
+  @SuppressWarnings("rawtypes")
+protected Vector files = new Vector();
    
   protected JButton explorer_button = null;
   protected JButton chrome_button = null;
@@ -56,6 +42,8 @@ class JDesktopApp
   protected JButton notepad_button = null;
   
   protected JPanel main_panel = new JPanel();
+  
+  public JNotepad main_notepad = new JNotepad();
   
   public JDesktopApp() {
     super(new JFrame(){public boolean isShowing(){return true;}});
@@ -126,14 +114,17 @@ class JDesktopApp
     add(files);
   }
   
-  public void actionPerformed(ActionEvent e) {
+  @SuppressWarnings("unused")
+public void actionPerformed(ActionEvent e) {
     if (e.getSource() == notepad_button)
-      new JNotepad();
+    	this.main_notepad.toggleOn();
     else if (e.getSource() == explorer_button) {
-    	new fileView();
+    	if (this.main_notepad != null) {
+        	main_notepad.addToTextArea("Hello\n");
+    	}
     }
     else if (e.getSource() == pdf_button) {
-    	new pdfView();
+    	FileTreePanel test = new FileTreePanel(this.main_notepad);
     }
   }
 
@@ -159,7 +150,8 @@ class JDesktopApp
     return(icon);
   }
 
-  public void add(Vector files) {
+  @SuppressWarnings("rawtypes")
+public void add(Vector files) {
     int column = -1;
     int y_0 = 0;
     
@@ -179,13 +171,15 @@ class JDesktopApp
     }
   }
   
-  public void arrangeIcons(Vector files) {
+  @SuppressWarnings({ "unused", "rawtypes" })
+public void arrangeIcons(Vector files) {
     for (int i=0; i<files.size(); i++) {
       JFileIcon icon = (JFileIcon)files.elementAt(i);
     }
   }
   
-  public Vector readFilesAndFolders() {
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+public Vector readFilesAndFolders() {
     Vector files = new Vector();
     try {
       File path = new File(DESKTOP_PATH);
