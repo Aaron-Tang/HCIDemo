@@ -15,6 +15,7 @@ import javax.swing.tree.TreePath;
 /**
  * @author Kirill Grouchnikov
  */
+@SuppressWarnings("serial")
 public class FileTreePanel extends JFrame {
 	
 	protected pdfView pdfView;
@@ -257,7 +258,7 @@ public class FileTreePanel extends JFrame {
 	    
 	    this.tree.addMouseListener(new MouseAdapter() {
 	        public void mouseClicked(MouseEvent e) {
-	            if (e.getClickCount() == 2) {
+	            if (e.getClickCount() == 3) {
 	            	TreePath[] paths = tree.getSelectionPaths();
 	            	ArrayList<String> allFiles = new ArrayList<String>();
 	                for (TreePath path : paths) {

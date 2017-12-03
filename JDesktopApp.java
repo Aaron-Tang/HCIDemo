@@ -119,11 +119,6 @@ public void actionPerformed(ActionEvent e) {
     if (e.getSource() == notepad_button)
     	this.main_notepad.toggleOn();
     else if (e.getSource() == explorer_button) {
-    	if (this.main_notepad != null) {
-        	main_notepad.addToTextArea("Hello\n");
-    	}
-    }
-    else if (e.getSource() == pdf_button) {
     	FileTreePanel test = new FileTreePanel(this.main_notepad);
     }
   }

@@ -13,6 +13,7 @@ import javax.swing.*;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 
+@SuppressWarnings("serial")
 public class pdfView extends JFrame{
 
 	JTextField sourceFiles, destFile;

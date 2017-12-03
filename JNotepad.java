@@ -1,11 +1,8 @@
 import java.awt.*;
-import java.awt.image.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
-import javax.imageio.*;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 class JNotepad
   extends JFrame { 
   
