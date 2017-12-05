@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -19,6 +20,9 @@ import javax.swing.tree.TreePath;
 public class FileTreePanel extends JFrame {
 	
 	protected pdfView pdfView;
+	protected int counter = 0;
+	static Font font1 = new Font("SansSerif", Font.BOLD, 18);
+
 	
 	/**
 	 * File system view.
@@ -70,6 +74,7 @@ public class FileTreePanel extends JFrame {
 			}
 			JLabel result = (JLabel) super.getTreeCellRendererComponent(tree,
 					filename, sel, expanded, leaf, row, hasFocus);
+			result.setFont(font1);
 			if (file != null) {
 				Icon icon = this.iconCache.get(filename);
 				if (icon == null) {
@@ -250,7 +255,7 @@ public class FileTreePanel extends JFrame {
 
 		File[] file = new File(
         		"C:\\Users\\aaron\\Documents\\Year 5 University"
-        		+ "\\CSC428\\Project\\desktop\\pdfs").listFiles();
+        		+ "\\CSC428\\Project\\desktop").listFiles();
 		
 		FileTreeNode rootTreeNode = new FileTreeNode(file);
 		this.tree = new JTree(rootTreeNode);
@@ -268,8 +273,27 @@ public class FileTreePanel extends JFrame {
 	    		    		allFiles.add(file.file.getAbsolutePath());
 	    		    	}
 	                }
-	                pdfView = new pdfView(allFiles, main_notepad);
-
+	                
+	                if (counter > 0) {
+	                	int selectedOption = JOptionPane.showConfirmDialog(
+	                		    null,
+	                		    "Would you like to paste into the same file as before?",
+	                		    "Auto-Add text",
+	                		    JOptionPane.YES_NO_OPTION);
+	                	
+	                	if (selectedOption == JOptionPane.YES_OPTION) {
+	                		pdfView.allFiles = allFiles;
+	                		pdfView.addTitlesToFile(pdfView.lastDest);
+	                			                	}
+	                	else if (selectedOption == JOptionPane.NO_OPTION) {
+	                		counter = 1;
+		                	pdfView = new pdfView(allFiles, main_notepad);
+	                	}
+	                }
+	                else {
+	                	counter += 1;
+	                	pdfView = new pdfView(allFiles, main_notepad);
+	                }
 	            }
 	        }
 	    });
@@ -285,18 +309,4 @@ public class FileTreePanel extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-
-//	public static void main(String[] args) {
-//		SwingUtilities.invokeLater(new Runnable() {
-//			public void run() {
-//				JFrame frame = new JFrame("File tree");
-//				frame.setSize(500, 400);
-//				frame.setLocationRelativeTo(null);
-//				frame.getContentPane().add(new FileTreePanel());
-//				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				frame.setVisible(true);
-//				frame.toFront();
-//			}
-//		});
-//	}
 }
