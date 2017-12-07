@@ -274,7 +274,7 @@ public class FileTreePanel extends JFrame {
 	    		    	}
 	                }
 	                
-	                if (counter > 0) {
+	                if (counter > 1) {
 	                	int selectedOption = JOptionPane.showConfirmDialog(
 	                		    null,
 	                		    "Would you like to paste into the same file as before?",
@@ -282,17 +282,28 @@ public class FileTreePanel extends JFrame {
 	                		    JOptionPane.YES_NO_OPTION);
 	                	
 	                	if (selectedOption == JOptionPane.YES_OPTION) {
-	                		pdfView.allFiles = allFiles;
-	                		pdfView.addTitlesToFile(pdfView.lastDest);
+	                		if (pdfView.lastDest != "") {
+		                		pdfView.allFiles = allFiles;
+		                		pdfView.addTitlesToFile(pdfView.lastDest);
+	                		}
+	                		else {
+	                			JOptionPane.showMessageDialog(null, 
+	            						"No previous filename found, please enter one first",
+	            						"No Previous File Found",
+	            						JOptionPane.WARNING_MESSAGE);
+			                	pdfView = new pdfView(allFiles, main_notepad);
+	                		}
 	                			                	}
 	                	else if (selectedOption == JOptionPane.NO_OPTION) {
-	                		counter = 1;
 		                	pdfView = new pdfView(allFiles, main_notepad);
+		                	counter = 1;
+
 	                	}
 	                }
 	                else {
-	                	counter += 1;
 	                	pdfView = new pdfView(allFiles, main_notepad);
+//	                	System.out.println(pdfView.successful);
+	                	counter += 1;
 	                }
 	            }
 	        }

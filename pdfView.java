@@ -21,7 +21,7 @@ public class pdfView extends JFrame{
 	JButton button1;
 	protected ArrayList<String> allFiles = new ArrayList<String>();
 	Font font1 = new Font("SansSerif", Font.PLAIN, 20);
-	String lastDest;
+	String lastDest = "";
 	JNotepad notepad;
 	
 	
@@ -63,7 +63,6 @@ public class pdfView extends JFrame{
 	    
 	    setVisible(true);
 	}
-	
 	
 	public ArrayList<String> addTitlesToFile(String target) {
 		ArrayList<String> output = new ArrayList<String>();
